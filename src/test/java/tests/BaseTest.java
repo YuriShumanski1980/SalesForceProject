@@ -1,8 +1,10 @@
 package tests;
 
-import Pages.HomePage;
-import Pages.LoginPage;
-import Pages.NewAccountModalPage;
+import lombok.extern.log4j.Log4j2;
+import pages.BasePage;
+import pages.HomePage;
+import pages.LoginPage;
+import pages.NewAccountModalPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +18,10 @@ import org.testng.annotations.Listeners;
 import java.util.concurrent.TimeUnit;
 
 @Listeners(TestListener.class)
+@Log4j2
 public class BaseTest {
     WebDriver driver;
+    BasePage basePage;
     LoginPage loginPage;
     HomePage homePage;
     NewAccountModalPage newAccountModalPage;
@@ -35,7 +39,7 @@ public class BaseTest {
         homePage = new HomePage(driver);
         newAccountModalPage = new NewAccountModalPage(driver);
         String variable = "driver";
-        System.out.println("Setting driver into context with variable name " + variable);
+        log.info("Setting driver into context with variable name " + variable);
         context.setAttribute(variable, driver);
     }
 

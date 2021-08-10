@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import elements.DropDown;
 import elements.Input;
@@ -10,8 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Log4j2
 public class NewAccountModalPage extends BasePage {
@@ -20,14 +18,11 @@ public class NewAccountModalPage extends BasePage {
         super(driver);
     }
 
-    private static final String URL_NEW_ACCOUNT = "https://filial-z.lightning.force.com/lightning/o/Account/new";
     private static final String COMMON_ELEMENT = "//*[@id='brandBand_2']";
     private static final String ACCOUNT_NAME = COMMON_ELEMENT + "//descendant::div[contains(@class, 'sfaOutputNameWithHierarchyIcon')]//descendant::span[contains(.,'%s')]";
-    private static final String ACCOUNT_PHONE = COMMON_ELEMENT + "//descendant::a[contains(.,'%s')]";
-    private static final String ACCOUNT_ADDRESS = COMMON_ELEMENT + "//slot/lightning-formatted-address/a/div[contains(.,'%s')]";
-    private static final String ACCOUNT_ADDRESS2 = COMMON_ELEMENT + "//slot/lightning-formatted-address/a/div[contains(.,'%s')]";
-    private static final String ACCOUNT_STATE = COMMON_ELEMENT + "//slot/lightning-formatted-address/a/div[contains(.,'%s')]";
-    private static final String ACCOUNT_WEBSITE = COMMON_ELEMENT + "//descendant::a[contains(.,'%s')]";
+    private static final String ACCOUNT_PHONE_WEBSITE = COMMON_ELEMENT + "//descendant::a[contains(.,'%s')]";
+    private static final String ACCOUNT_ADDRESS_ADDRESS2_STATE = COMMON_ELEMENT + "//slot/lightning-formatted-address/a/div[contains(.,'%s')]";
+
 
     @FindBy(xpath = "//*[contains(text(),'Additional Information')]")
     WebElement additionalInformation;
@@ -36,7 +31,7 @@ public class NewAccountModalPage extends BasePage {
     @Step("Open accounts page")
     public NewAccountModalPage openNewAccountPage() {
         log.info("Open new account modal page");
-        driver.get(URL_NEW_ACCOUNT);
+        driver.get(NEW_ACCOUNT_MODAL_PAGE);
         return this;
     }
 
@@ -85,18 +80,13 @@ public class NewAccountModalPage extends BasePage {
 
     @Step("Save account")
     public NewAccountModalPage clickSaveButton() {
-        log.info("Жмякнули кнопку сохранить аккаунт");
+        log.info("Clicked the save account button");
         new SaveButton(driver).clickSaveButton();
         return this;
     }
 
-    public void waitForElementOnNewModalPage(WebElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
     public NewAccountModalPage waitForPageLoaded() {
-        waitForElementOnNewModalPage(additionalInformation, 20);
+        waitForPageOpened(additionalInformation, 20);
         return this;
     }
 
@@ -105,22 +95,22 @@ public class NewAccountModalPage extends BasePage {
     }
 
     public String getNewAccountPhone(String phone) {
-        return driver.findElement(By.xpath(String.format(ACCOUNT_PHONE, phone))).getText();
+        return driver.findElement(By.xpath(String.format(ACCOUNT_PHONE_WEBSITE, phone))).getText();
     }
 
     public String getNewAccountAddress(String address) {
-        return driver.findElement(By.xpath(String.format(ACCOUNT_ADDRESS, address))).getText();
+        return driver.findElement(By.xpath(String.format(ACCOUNT_ADDRESS_ADDRESS2_STATE, address))).getText();
     }
 
     public String getNewAccountAddress2(String address2) {
-        return driver.findElement(By.xpath(String.format(ACCOUNT_ADDRESS2, address2))).getText();
+        return driver.findElement(By.xpath(String.format(ACCOUNT_ADDRESS_ADDRESS2_STATE, address2))).getText();
     }
 
     public String getNewAccountState(String state) {
-        return driver.findElement(By.xpath(String.format(ACCOUNT_STATE, state))).getText();
+        return driver.findElement(By.xpath(String.format(ACCOUNT_ADDRESS_ADDRESS2_STATE, state))).getText();
     }
 
     public String getNewAccountWebsite(String website) {
-        return driver.findElement(By.xpath(String.format(ACCOUNT_WEBSITE, website))).getText();
+        return driver.findElement(By.xpath(String.format(ACCOUNT_PHONE_WEBSITE, website))).getText();
     }
 }

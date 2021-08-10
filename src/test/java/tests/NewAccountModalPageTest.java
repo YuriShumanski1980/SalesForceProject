@@ -3,6 +3,7 @@ package tests;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 public class NewAccountModalPageTest extends BaseTest {
 
@@ -11,7 +12,9 @@ public class NewAccountModalPageTest extends BaseTest {
     public void newAccountModalPageTest() {
         loginPage
                 .loginPage()
-                .loginAndGoToHomePage("shumans-lqjm@force.com", "LJ77M9JKnszpzP@T");
+                .login(
+                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         newAccountModalPage
                 .openNewAccountPage()
                 .waitForPageLoaded()
