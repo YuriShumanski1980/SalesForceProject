@@ -28,10 +28,10 @@ public class NewAccountModalPage extends BasePage {
     WebElement additionalInformation;
 
 
-    @Step("Open accounts page")
+    @Step("Open new account modal page")
     public NewAccountModalPage openNewAccountPage() {
-        log.info("Open new account modal page");
-        driver.get(NEW_ACCOUNT_MODAL_PAGE);
+        log.info("Open new account modal page" + NEW_ACCOUNT_MODAL_PAGE);
+        super.openPage(NEW_ACCOUNT_MODAL_PAGE);
         return this;
     }
 

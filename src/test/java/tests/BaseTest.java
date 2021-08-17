@@ -1,10 +1,7 @@
 package tests;
 
 import lombok.extern.log4j.Log4j2;
-import pages.BasePage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.NewAccountModalPage;
+import pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +22,8 @@ public class BaseTest {
     LoginPage loginPage;
     HomePage homePage;
     NewAccountModalPage newAccountModalPage;
+    AccountPage accountPage;
+    NewTaskModalPage newTaskModalPage;
 
     @BeforeMethod
     @Step("Open browser,maximize window")
@@ -38,8 +37,10 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         newAccountModalPage = new NewAccountModalPage(driver);
+        accountPage = new AccountPage(driver);
+        newTaskModalPage = new NewTaskModalPage(driver);
         String variable = "driver";
-        log.info("Setting driver into context with variable name " + variable);
+        log.debug("Setting driver into context with variable name " + variable);
         context.setAttribute(variable, driver);
     }
 
