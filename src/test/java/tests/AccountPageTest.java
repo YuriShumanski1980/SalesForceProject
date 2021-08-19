@@ -16,9 +16,10 @@ public class AccountPageTest extends BaseTest {
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         accountPage
                 .openAccountListPage()
-                .clickDropDown("TestAccount-SalesForce")
-                .clickDeleteAccount()
+                .clickDropDownForAccountName("TestAccount-SalesForce")
+                .clickDeleteAccount();
+        newDeleteAccountModalPage
                 .clickDeleteAccountOnModalPage();
-        Assert.assertEquals(accountPage.elementIsNotPresent("TestAccount-SalesForce"), true);
+        Assert.assertEquals(accountPage.isElementPresent("TestAccount-SalesForce"), false);
     }
 }

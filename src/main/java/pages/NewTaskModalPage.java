@@ -2,7 +2,7 @@ package pages;
 
 import elements.DropDown;
 import elements.Input;
-import elements.SaveButton;
+import elements.Button;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
@@ -17,9 +17,9 @@ public class NewTaskModalPage extends BasePage {
         super(driver);
     }
 
-    private static final String TASK_SUBJECT = "//*[@class ='row row-main column']//descendant::span[contains(., '%s')]";
-    private static final String TASK_DUE_DATE = "//*[contains(@class, 'slds-col slds-grid')]//span[contains(@class, 'slds-grow')][contains(., '%s')]";
-    private static final String TASK_REMINDER_SET = "//*[@class = 'slds-form-element__control slds-grid itemBody']//span[contains(., '%s')]";
+    private static final String TASK_SUBJECT = "//*[contains(@class,'column')]//descendant::span[contains(@class, 'uiOutputText')][contains(., '%s')]";
+    private static final String TASK_DUE_DATE = "//*[contains(@class, 'slds-col')]//span[contains(@class, 'slds-grow')][contains(., '%s')]";
+    private static final String TASK_REMINDER_SET = "//*[contains(@class, 'itemBody')]//span[contains(., '%s')]";
 
     @FindBy(xpath = "//*[contains(text(),'Additional Information')]")
     WebElement taskAdditionalInformation;
@@ -31,35 +31,37 @@ public class NewTaskModalPage extends BasePage {
         return this;
     }
 
-    @Step("Create task without Reminder Set - Date & Time")
+    @Step("Create task without Reminder Set - Date & Time. " +
+            "Fill in the fields with information: {subject}, {relatedTo}, {dueDate}.")
     public NewTaskModalPage createInformationIntoTaskNewPage(String subject, String relatedTo, String dueDate) {
-        log.info("Select the subject of the task");
+        log.info(String.format("Select the subject of the task: %s in Subject", subject));
         new Input(driver, "Subject").writeTaskText(subject);
-        log.info("Select which account the task refers to");
+        log.info(String.format("Select which account the task refers to: Related To account %s", relatedTo));
         new Input(driver, "Related To").writeTaskText(relatedTo);
-        log.info("Specify due date");
+        log.info(String.format("Specify due date: %s in Due Date", dueDate));
         new Input(driver, "Due Date").writeTaskText(dueDate);
         log.info("Remove the ability to specify the date and time of the reminder - remove the checkbox");
         new Input(driver, "Reminder Set").clickReminderSet();
         return this;
     }
 
-    @Step("Create task with Reminder Set - Date & Time")
+    @Step("Create task with Reminder Set - Date & Time.\n" +
+            "Fill in the fields with information: {subject}, {relatedTo}, {dueDate}, {date}, {timeId}, {status}, {priority}.")
     public NewTaskModalPage createNewTaskWithDateAndTime(String subject, String relatedTo, String dueDate, String date,
                                                          String timeId, String status, String priority) {
-        log.info("Select the subject of the task");
+        log.info(String.format("Select the subject of the task: %s in Subject", subject));
         new Input(driver, "Subject").writeTaskText(subject);
-        log.info("Select which account the task refers to");
+        log.info(String.format("Select which account the task refers to: Related To account %s", relatedTo));
         new Input(driver, "Related To").writeTaskText(relatedTo);
-        log.info("Specify due date");
+        log.info(String.format("Specify due date: %s in Due Date", dueDate));
         new Input(driver, "Due Date").writeTaskText(dueDate);
-        log.info("Specify Reminder Date");
+        log.info(String.format("Specify Reminder Date: %s in Reminder Date", date));
         new Input(driver, "Date").chooseDateSendDay(date);
-        log.info("Specify Reminder Time");
+        log.info(String.format("Specify Reminder Time: %s in Reminder Time", timeId));
         new DropDown(driver, "Time").selectTimeDropDown(timeId);
-        log.info("Specify status");
+        log.info(String.format("Specify status: Status %s", status));
         new DropDown(driver, "Status").select(status);
-        log.info("Specify priority");
+        log.info(String.format("Specify priority: Priority %s", priority));
         new DropDown(driver, "Priority").select(priority);
         return this;
     }
@@ -67,7 +69,7 @@ public class NewTaskModalPage extends BasePage {
     @Step("Save account")
     public NewTaskModalPage clickSaveNewTaskButton() {
         log.info("Clicked save new task button");
-        new SaveButton(driver).clickSaveButton();
+        new Button(driver).clickSaveButton();
         return this;
     }
 

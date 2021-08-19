@@ -35,10 +35,10 @@ public class NewTaskModalPageTest extends BaseTest {
                 .openNewTaskPage()
                 .waitForTaskModalPageLoaded()
                 .createNewTaskWithDateAndTime("Send Letter", "TestAccount-SalesForce", "8/25/2021",
-                        "8/18/2021", "1230", "In Progress", "Low")
+                        "8/23/2021", "1230", "In Progress", "Low")
                 .clickSaveNewTaskButton();
         Assert.assertEquals(newTaskModalPage.getTaskSubject ("Send"), "Send Letter");
         Assert.assertEquals(newTaskModalPage.getTaskDueDate("2021"), "8/25/2021");
-        Assert.assertEquals(newTaskModalPage.getTaskReminderSet("Aug"), "Aug 18, 2021 at 12:30 pm");
+        Assert.assertEquals(newTaskModalPage.getTaskReminderSet("Aug"), "Aug 23, 2021 at 12:30 pm");
     }
 }

@@ -16,10 +16,10 @@ public class LoginPage extends BasePage {
 
     private static final By LOGIN_BUTTON = By.id("Login");
     private static final By ERROR_TEXT = By.id("error");
-    private static final By LOGO_ICON = By.xpath("//*[@class = 'photoContainer forceSocialPhoto']");
+    private static final By LOGO_ICON = By.xpath("//*[contains(@class, 'photoContainer')]");
     private static final By LOGO_NAME = By.xpath("//*[@class = 'profile-card-name']/descendant::a[contains(@class,'profile-link-label')]");
 
-    @FindBy(xpath = "//*[@class = 'photoContainer forceSocialPhoto']")
+    @FindBy(xpath = "//*[contains(@class, 'photoContainer')]")
     WebElement iconImage;
 
     @FindBy(id = "error")
@@ -31,7 +31,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    @Step("The user is logged into the account")
+    @Step("The user is logged into the account. Send {username} & {password} for login.")
     public void login(String username, String password) {
         log.info(String.format("Fill in username: %s in Login field", username));
         driver.findElement(By.id("username")).sendKeys(username);
