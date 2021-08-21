@@ -18,8 +18,19 @@ public class LoginPageTest extends BaseTest {
         loginPage
                 .waitForHomePageLoaded();
         Assert.assertEquals(loginPage.getTitle(), "Home | Salesforce");
-        //TODO add check logo name
-        // Assert.assertEquals(loginPage.getLogoName("Yuri"),"Yuri SHU");
+    }
+
+    @Test
+    public void loginPageTestCheckLogoNameTest() {
+        loginPage
+                .loginPage()
+                .login(
+                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+        loginPage
+                .waitForHomePageLoaded()
+                .clickLogoName();
+        Assert.assertEquals(loginPage.getLogoName(), System.getenv().getOrDefault("accountName", PropertyReader.getProperty("accountName")));
     }
 
     @Test(description = "Registration / logging in Sales Force")

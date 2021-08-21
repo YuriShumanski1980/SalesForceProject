@@ -15,10 +15,9 @@ public class BasePage implements IConstants {
         PageFactory.initElements(driver, this);
     }
 
-    //TODO add method for common URL
-//    public void openPage(String url) {
-//        driver.get(url);
-//    }
+    public void openPage(String url) {
+        driver.get(url);
+    }
 
     public void waitForPageOpened(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(driver, timeout);

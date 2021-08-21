@@ -2,7 +2,7 @@ package pages;
 
 import elements.DropDown;
 import elements.Input;
-import elements.SaveButton;
+import elements.Button;
 import elements.TextArea;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -28,14 +28,17 @@ public class NewAccountModalPage extends BasePage {
     WebElement additionalInformation;
 
 
-    @Step("Open accounts page")
+    @Step("Open new account modal page")
     public NewAccountModalPage openNewAccountPage() {
-        log.info("Open new account modal page");
-        driver.get(NEW_ACCOUNT_MODAL_PAGE);
+        log.info("Open new account modal page" + NEW_ACCOUNT_MODAL_PAGE);
+        super.openPage(NEW_ACCOUNT_MODAL_PAGE);
         return this;
     }
 
-    @Step("Fill in the information on the account page.")
+    @Step("Fill in the information on the account page with information: {accountName}, {website}, {option}, {description}, {phoneNumber},\n" +
+            "{option2}, {numberOfEmployees}, {billingStreet}, {shippingStreet},\n" +
+            "{billingCity}, {billingState}, {shippingCity}, {shippingState},\n" +
+            "{billingZip}, {billingCountry}, {shippingZip}, {shippingCountry}.")
     public NewAccountModalPage createInformationIntoAccountNewPage
             (String accountName, String website, String option, String description, String phoneNumber,
              String option2, String numberOfEmployees, String billingStreet, String shippingStreet,
@@ -81,7 +84,7 @@ public class NewAccountModalPage extends BasePage {
     @Step("Save account")
     public NewAccountModalPage clickSaveButton() {
         log.info("Clicked the save account button");
-        new SaveButton(driver).clickSaveButton();
+        new Button(driver).clickSaveButton();
         return this;
     }
 

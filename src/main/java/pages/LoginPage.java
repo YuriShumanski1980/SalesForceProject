@@ -16,21 +16,22 @@ public class LoginPage extends BasePage {
 
     private static final By LOGIN_BUTTON = By.id("Login");
     private static final By ERROR_TEXT = By.id("error");
-    private static final By LOGO_NAME = By.xpath("//*[contains(@class,'profile-card-name')]/descendant::a[contains(text(),'%s')]");
+    private static final By LOGO_ICON = By.xpath("//*[contains(@class, 'photoContainer')]");
+    private static final By LOGO_NAME = By.xpath("//*[@class = 'profile-card-name']/descendant::a[contains(@class,'profile-link-label')]");
 
-    @FindBy(xpath = "//*[@class = 'photoContainer forceSocialPhoto']")
+    @FindBy(xpath = "//*[contains(@class, 'photoContainer')]")
     WebElement iconImage;
 
     @FindBy(id = "error")
     WebElement errorText;
 
     public LoginPage loginPage() {
-        log.info("Open login page");
-        driver.get(LOGIN_URL_PAGE);
+        log.info("Open login page" + LOGIN_URL_PAGE);
+        super.openPage(LOGIN_URL_PAGE);
         return this;
     }
 
-    @Step("The user is logged into the account")
+    @Step("The user is logged into the account. Send {username} & {password} for login.")
     public void login(String username, String password) {
         log.info(String.format("Fill in username: %s in Login field", username));
         driver.findElement(By.id("username")).sendKeys(username);
@@ -54,12 +55,16 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_TEXT).getText();
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return driver.getTitle();
     }
-//TODO add check logo name
-//    public String getLogoName(String logoName){
-//        return driver.findElement(By.xpath(String.format(logoName, LOGO_NAME))).getText();
-//        return driver.findElement(By.xpath(String.format(String.valueOf(LOGO_NAME), logoName))).getText();
-//    }
+
+    public LoginPage clickLogoName() {
+        driver.findElement(LOGO_ICON).click();
+        return this;
+    }
+
+    public String getLogoName() {
+        return driver.findElement(LOGO_NAME).getText();
+    }
 }
