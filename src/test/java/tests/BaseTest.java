@@ -25,6 +25,8 @@ public class BaseTest {
     AccountPage accountPage;
     NewTaskModalPage newTaskModalPage;
     DeleteAccountModalPage newDeleteAccountModalPage;
+    NewOpportunityModalPage newOpportunityModalPage;
+    EmailModalPage newEmailModalPage;
 
     @BeforeMethod
     @Step("Open browser,maximize window")
@@ -41,6 +43,8 @@ public class BaseTest {
         accountPage = new AccountPage(driver);
         newTaskModalPage = new NewTaskModalPage(driver);
         newDeleteAccountModalPage = new DeleteAccountModalPage(driver);
+        newOpportunityModalPage = new NewOpportunityModalPage(driver);
+        newEmailModalPage = new EmailModalPage(driver);
         String variable = "driver";
         log.debug("Setting driver into context with variable name " + variable);
         context.setAttribute(variable, driver);

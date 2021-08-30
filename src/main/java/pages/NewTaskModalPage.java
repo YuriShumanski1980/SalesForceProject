@@ -24,7 +24,7 @@ public class NewTaskModalPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Additional Information')]")
     WebElement taskAdditionalInformation;
 
-    @Step
+    @Step("Open new task modal page")
     public NewTaskModalPage openNewTaskPage() {
         log.info("Open new task modal page" + NEW_TASK_MODAL_PAGE);
         super.openPage(NEW_TASK_MODAL_PAGE);
@@ -81,6 +81,7 @@ public class NewTaskModalPage extends BasePage {
     public String getTaskSubject (String subject) {
         return driver.findElement(By.xpath(String.format(TASK_SUBJECT, subject))).getText();
     }
+
     public String getTaskDueDate (String dueDate) {
         return driver.findElement(By.xpath(String.format(TASK_DUE_DATE, dueDate))).getText();
     }
