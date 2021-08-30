@@ -26,14 +26,14 @@ public class Input {
         this.driver = driver;
     }
 
-    @Step("Fill in the information on account modal page")
+    @Step("Fill in the information on account modal page: {text}")
     public void writeText(String text) {
         driver.findElement(By.xpath(String.format(INPUT_XPATH, label))).sendKeys(text);
     }
 
-    @Step("Fill in the information on task modal page")
-    public void writeTaskText(String text) {
-        driver.findElement(By.xpath(String.format(INPUT_FOR_TASK_XPATH, label))).sendKeys(text);
+    @Step("Fill in the information on task modal page: {subject}")
+    public void writeTaskText(String subject) {
+        driver.findElement(By.xpath(String.format(INPUT_FOR_TASK_XPATH, label))).sendKeys(subject);
     }
 
     @Step("Click checkbox on task modal page")
@@ -41,30 +41,30 @@ public class Input {
         driver.findElement(By.xpath(String.format(INPUT_FOR_TASK_XPATH, label))).click();
     }
 
-    @Step("Specify reminder date on task modal page")
-    public void chooseDateSendDay(String text) {
+    @Step("Specify reminder date {date} on task modal page")
+    public void chooseDateSendDay(String date) {
         driver.findElement(By.xpath(String.format(INPUT_FOR_TASK_DATE_XPATH, label))).clear();
-        driver.findElement(By.xpath(String.format(INPUT_FOR_TASK_DATE_XPATH, label))).sendKeys(text);
+        driver.findElement(By.xpath(String.format(INPUT_FOR_TASK_DATE_XPATH, label))).sendKeys(date);
     }
 
-    @Step("Fill in the information on opportunity modal page")
+    @Step("Fill in the information on opportunity modal page: {text}")
     public void specifyOpportunity(String text) {
         driver.findElement(By.xpath(String.format(INPUT_FOR_OPPORTUNITIES_MODAL_PAGE_XPATH, label))).sendKeys(text);
     }
 
-    @Step("Specify interest rate on opportunity modal page")
-    public void specifyProbability(String text) {
+    @Step("Specify interest rate on opportunity modal page: {probability}")
+    public void specifyProbability(String probability) {
         driver.findElement(By.xpath(String.format(INPUT_FOR_OPPORTUNITIES_MODAL_PAGE_XPATH, label))).clear();
-        driver.findElement(By.xpath(String.format(INPUT_FOR_OPPORTUNITIES_MODAL_PAGE_XPATH, label))).sendKeys(text);
+        driver.findElement(By.xpath(String.format(INPUT_FOR_OPPORTUNITIES_MODAL_PAGE_XPATH, label))).sendKeys(probability);
     }
 
-    @Step("Specify email address on email modal page")
-    public void writeEmailAddress(String text) {
-        driver.findElement(By.xpath(INPUT_FOR_EMAIL_XPATH)).sendKeys(text);
+    @Step("Specify email address {emailAddress} on email modal page")
+    public void writeEmailAddress(String emailAddress) {
+        driver.findElement(By.xpath(INPUT_FOR_EMAIL_XPATH)).sendKeys(emailAddress);
     }
 
-    @Step("Specify email subject on email modal page")
-    public void writeEmailSubject(String text) {
-        driver.findElement(By.xpath(INPUT_SUBJECT_EMAIL_XPATH)).sendKeys(text);
+    @Step("Specify email subject {emailSubject} on email modal page")
+    public void writeEmailSubject(String emailSubject) {
+        driver.findElement(By.xpath(INPUT_SUBJECT_EMAIL_XPATH)).sendKeys(emailSubject);
     }
 }

@@ -18,7 +18,7 @@ public class NewTaskModalPageTest extends BaseTest {
         newTaskModalPage
                 .openNewTaskPage()
                 .waitForTaskModalPageLoaded()
-                .createInformationIntoTaskNewPage("Send Letter", "TestAccount-SalesForce", "8/16/2021")
+                .createInformationIntoTaskNewPage("Send Letter", "Privet trabla", "9/22/2021")
                 .clickSaveNewTaskButton();
         Assert.assertEquals(newTaskModalPage.getTaskSubject ("Send"), "Send Letter");
     }
@@ -34,11 +34,11 @@ public class NewTaskModalPageTest extends BaseTest {
         newTaskModalPage
                 .openNewTaskPage()
                 .waitForTaskModalPageLoaded()
-                .createNewTaskWithDateAndTime("Send Letter", "TestAccount-SalesForce", "8/25/2021",
-                        "8/23/2021", "1230", "In Progress", "Low")
+                .createNewTaskWithDateAndTime("Send Letter", "Privet trabla", "9/25/2021",
+                        "8/31/2021", "1230", "In Progress", "Low")
                 .clickSaveNewTaskButton();
         Assert.assertEquals(newTaskModalPage.getTaskSubject ("Send"), "Send Letter");
-        Assert.assertEquals(newTaskModalPage.getTaskDueDate("2021"), "8/25/2021");
-        Assert.assertEquals(newTaskModalPage.getTaskReminderSet("Aug"), "Aug 23, 2021 at 12:30 pm");
+        Assert.assertEquals(newTaskModalPage.getTaskDueDate("2021"), "9/25/2021");
+        Assert.assertEquals(newTaskModalPage.getTaskReminderSet("Aug"), "Aug 31, 2021 at 12:30 pm");
     }
 }

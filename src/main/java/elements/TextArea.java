@@ -18,9 +18,10 @@ public class TextArea {
         this.label = label;
     }
 
-    @Step("Filling in text information in the fields describing the terms of the transaction, place of delivery, etc. {text}")
-    public void writeTextDescription(String text) {
-        driver.findElement(By.xpath(String.format(TEXTAREA_ACCOUNT_MODAL_XPATH, label))).sendKeys(text);
+    @Step("Filling in text information in the fields describing the terms of the transaction, " +
+            "place of delivery, etc. {description}")
+    public void writeTextDescription(String description) {
+        driver.findElement(By.xpath(String.format(TEXTAREA_ACCOUNT_MODAL_XPATH, label))).sendKeys(description);
     }
 
     @Step("Describe the possibilities in the description field {text}")

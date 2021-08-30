@@ -21,21 +21,21 @@ public class DropDown {
         this.label = label;
     }
 
-    @Step("Select option")
+    @Step("Select option {option}")
     public void select(String option) {
         driver.findElement(By.xpath(String.format(DROPDOWN_XPATH, label))).click();
         driver.findElement(By.xpath(String.format(SELECT_OPTION_XPATH, option))).click();
     }
 
-    @Step("Select time")
-    public void selectTimeDropDown(String option) {
+    @Step("Select time {timeId}")
+    public void selectTimeDropDown(String timeId) {
         driver.findElement(By.xpath(String.format(TIME_DROPDOWN_XPATH, label))).click();
-        driver.findElement(By.xpath(String.format(SELECT_TIME_DROPDOWN_XPATH, option))).click();
+        driver.findElement(By.xpath(String.format(SELECT_TIME_DROPDOWN_XPATH, timeId))).click();
     }
 
-    @Step("Select opportunity option")
-    public void selectOpportunityOption(String option) {
+    @Step("Select opportunity option: {stage}")
+    public void selectOpportunityOption(String stage) {
         driver.findElement(By.xpath(String.format(SELECT_DROPDOWN_OPPORTUNITY_XPATH, label))).click();
-        driver.findElement(By.xpath(String.format(SELECT_OPPORTUNITY_OPTION_XPATH, option))).click();
+        driver.findElement(By.xpath(String.format(SELECT_OPPORTUNITY_OPTION_XPATH, stage))).click();
     }
 }
