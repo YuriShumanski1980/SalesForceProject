@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage implements IConstants {
     WebDriver driver;
 
-
     BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
