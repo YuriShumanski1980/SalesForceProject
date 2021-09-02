@@ -19,8 +19,8 @@ public class NewOpportunityModalPageTest extends BaseTest {
         newOpportunityModalPage
                 .openNewOpportunityModalPage()
                 .waitForOpportunityModalPageLoaded()
-                .createNewIncompleteOpportunity("9/21/2021", "Как успеть запрыгнуть в последний вагон",
-                        "20","15200", "Давайте жить дружно! - Let live in peace!")
+                .createNewIncompleteOpportunity("9/21/2021", "Kak uspet zaprygnut v poslednii vagon",
+                        "20","15200", "Davaite zhit druzhno! - Let live in peace!")
                 .saveOpportunity();
         Assert.assertEquals(newOpportunityModalPage.getErrorMassage(), "We hit a snag.");
     }
@@ -36,17 +36,17 @@ public class NewOpportunityModalPageTest extends BaseTest {
         newOpportunityModalPage
                 .openNewOpportunityModalPage()
                 .waitForOpportunityModalPageLoaded()
-                .createNewCompleteOpportunity("9/21/2021", "Как успеть запрыгнуть в последний вагон",
+                .createNewCompleteOpportunity("9/21/2021", "Kak uspet zaprygnut v poslednii vagon",
                         "Qualification", "Privet trabla", "35", "New Business", "11200",
                         "External Referral", "You will learn how to earn several times more",
-                        "Давайте жить дружно! - Let live in peace!")
+                        "Davaite zhit druzhno! - Let live in peace!")
                 .saveOpportunity();
-        Assert.assertEquals(newOpportunityModalPage.getOpportunityName("Как"), "Как успеть запрыгнуть в последний вагон");
+        Assert.assertEquals(newOpportunityModalPage.getOpportunityName("Kak"), "Kak uspet zaprygnut v poslednii vagon");
         Assert.assertEquals(newOpportunityModalPage.getOpportunityStage("Qual"), "Qualification");
         Assert.assertEquals(newOpportunityModalPage.getCloseDate("9/21"), "9/21/2021");
         Assert.assertEquals(newOpportunityModalPage.getOpportunityType("New"), "New Business");
         Assert.assertEquals(newOpportunityModalPage.getOpportunityAmount("11"), "$11,200.00");
         Assert.assertEquals(newOpportunityModalPage.getOpportunityLeadSource("Referral"), "External Referral");
-        Assert.assertEquals(newOpportunityModalPage.getOpportunityNextStep("дружно"), "Давайте жить дружно! - Let live in peace!");
+        Assert.assertEquals(newOpportunityModalPage.getOpportunityNextStep("druzhno"), "Davaite zhit druzhno! - Let live in peace!");
     }
 }

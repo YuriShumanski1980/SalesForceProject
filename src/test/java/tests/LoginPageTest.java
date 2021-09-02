@@ -7,7 +7,7 @@ import utils.PropertyReader;
 
 public class LoginPageTest extends BaseTest {
 
-    @Test(description = "Registration / logging in Sales Force")
+    @Test(priority = 2, description = "Registration / logging in Sales Force")
     @Description("Enter username / password -> press enter")
     public void loginPageTest() {
         loginPage
@@ -20,7 +20,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertEquals(loginPage.getTitle(), "Home | Salesforce");
     }
 
-    @Test
+    @Test(priority = 1)
     public void loginPageTestCheckLogoNameTest() {
         loginPage
                 .loginPage()
@@ -33,7 +33,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertEquals(loginPage.getLogoName(), System.getenv().getOrDefault("accountName", PropertyReader.getProperty("accountName")));
     }
 
-    @Test(description = "Registration / logging in Sales Force")
+    @Test(priority = 3, description = "Registration / logging in Sales Force")
     @Description("Enter username / wrong password -> press enter")
     public void loginPageTestWithWrongPasswordTest() {
         loginPage
