@@ -13,8 +13,8 @@ pipeline {
     }
 
     environment {
-            USERNAME = '${env.USERNAME}'
-            PASSWORD = '${env.PASSWORD}'
+            USERNAME = 'username'
+            PASSWORD = 'password'
             USERNAME1 = '${env.USERNAME1}'
             PASSWORD1 = '${env.PASSWORD1}'
             ACCOUNTNAME = '${env.ACCOUNTNAME}'
@@ -39,8 +39,8 @@ pipeline {
 //             echo "${env.accountName}"
 //             sh "printenv"
 
-            echo username = USERNAME
-            echo password = PASSWORD
+            echo "username = ${env.USERNAME}"
+            echo "password = ${env.PASSWORD}"
             echo username1 = USERNAME1
             echo password1 = PASSWORD1
             echo accountName = ACCOUNTNAME
