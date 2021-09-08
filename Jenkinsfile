@@ -12,13 +12,13 @@ pipeline {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
-//     environment {
-//             USERNAME = '${env.USERNAME}'
-//             PASSWORD = '${env.PASSWORD}'
-//             USERNAME1 = '${env.USERNAME1}'
-//             PASSWORD1 = '${env.PASSWORD1}'
-//             ACCOUNTNAME = '${env.ACCOUNTNAME}'
-//         }
+    environment {
+            USERNAME = '${env.USERNAME}'
+            PASSWORD = '${env.PASSWORD}'
+            USERNAME1 = '${env.USERNAME1}'
+            PASSWORD1 = '${env.PASSWORD1}'
+            ACCOUNTNAME = '${env.ACCOUNTNAME}'
+        }
 
    stages {
       stage('Testing') {
