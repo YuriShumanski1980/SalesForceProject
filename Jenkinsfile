@@ -31,6 +31,13 @@ pipeline {
 
             // To run Maven on a Windows agent, use
             bat "mvn test -Dtest=LoginPageTest"
+
+            echo "${env.username}"
+            echo "${env.password}"
+            echo "${env.username1}"
+            echo "${env.password1}"
+            echo "${env.accountName}"
+            sh "printenv"
          }
 
          post {
@@ -42,15 +49,15 @@ pipeline {
          }
       }
 
-      stage("Env Variables") {
-        steps{
-            echo "${env.username}"
-            echo "${env.password}"
-            echo "${env.username1}"
-            echo "${env.password1}"
-            echo "${env.accountName}"
-            sh "printenv"
-      }
+//       stage("Env Variables") {
+//         steps{
+//             echo "${env.username}"
+//             echo "${env.password}"
+//             echo "${env.username1}"
+//             echo "${env.password1}"
+//             echo "${env.accountName}"
+//             sh "printenv"
+//       }
         }
       stage('Reporting') {
          steps {
