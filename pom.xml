@@ -20,16 +20,16 @@
         <log4j-core.vertion>2.14.1</log4j-core.vertion>
         <jackson-dataformat-yaml.vertion>2.12.3</jackson-dataformat-yaml.vertion>
         <lombok.vertion>1.18.20</lombok.vertion>
-        <!--suppress UnresolvedMavenProperty -->
-        <test.param>${env.USERNAME}</test.param>
-        <!--suppress UnresolvedMavenProperty -->
-        <test.param>${env.PASSWORD}</test.param>
-        <!--suppress UnresolvedMavenProperty -->
-        <test.param>${env.PASSWORD1}</test.param>
-        <!--suppress UnresolvedMavenProperty -->
-        <test.param>${env.USERNAME1}</test.param>
-        <!--suppress UnresolvedMavenProperty -->
-        <test.param>${env.ACCOUNTNAME}</test.param>
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.USERNAME}</test.param>-->
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.PASSWORD}</test.param>-->
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.PASSWORD1}</test.param>-->
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.USERNAME1}</test.param>-->
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.ACCOUNTNAME}</test.param>-->
     </properties>
     <build>
         <plugins>
