@@ -44,11 +44,12 @@ pipeline {
 
       stage("Env Variables") {
         steps{
-            echo "${env.USERNAME}"
-            echo "${env.PASSWORD}"
-            echo "${env.USERNAME1}"
-            echo "${env.PASSWORD1}"
-            echo "${env.ACCOUNTNAME}"
+            echo "${env.username}"
+            echo "${env.password}"
+            echo "${env.username1}"
+            echo "${env.password1}"
+            echo "${env.accountName}"
+            sh "printenv"
       }
         }
       stage('Reporting') {
