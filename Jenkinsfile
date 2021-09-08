@@ -12,13 +12,13 @@ pipeline {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
-    environment {
-            USERNAME = 'username'
-            PASSWORD = 'password'
-            USERNAME1 = '${env.USERNAME1}'
-            PASSWORD1 = '${env.PASSWORD1}'
-            ACCOUNTNAME = '${env.ACCOUNTNAME}'
-        }
+//     environment {
+//             USERNAME = 'username'
+//             PASSWORD = 'password'
+//             USERNAME1 = '${env.USERNAME1}'
+//             PASSWORD1 = '${env.PASSWORD1}'
+//             ACCOUNTNAME = '${env.ACCOUNTNAME}'
+//         }
 
    stages {
       stage('Testing') {
@@ -39,11 +39,11 @@ pipeline {
 //             echo "${env.accountName}"
 //             sh "printenv"
 
-            echo "username = ${env.USERNAME}"
-            echo "password = ${env.PASSWORD}"
-            echo username1 = USERNAME1
-            echo password1 = PASSWORD1
-            echo accountName = ACCOUNTNAME
+//             echo "username = ${env.USERNAME}"
+//             echo "password = ${env.PASSWORD}"
+//             echo username1 = USERNAME1
+//             echo password1 = PASSWORD1
+//             echo accountName = ACCOUNTNAME
          }
 
          post {
