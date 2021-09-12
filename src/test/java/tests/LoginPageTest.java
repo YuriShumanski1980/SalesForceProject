@@ -30,7 +30,7 @@ public class LoginPageTest extends BaseTest {
         loginPage
                 .waitForHomePageLoaded()
                 .clickLogoName();
-        Assert.assertEquals(loginPage.getLogoName(), System.getProperty("accountName", PropertyReader.getProperty("accountName")));
+        Assert.assertEquals(loginPage.getLogoName("Yura"), "Yura SHUMANAS");
     }
 
     @Test(description = "Registration / logging in Sales Force")

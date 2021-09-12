@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
     private static final By LOGIN_BUTTON = By.id("Login");
     private static final By ERROR_TEXT = By.id("error");
     private static final By LOGO_ICON = By.xpath("//*[contains(@class, 'photoContainer')]");
-    private static final By LOGO_NAME = By.xpath("//*[@class = 'profile-card-name']/descendant::a[contains(@class,'profile-link-label')]");
+    private static final String LOGO_NAME = "//*[@class = 'profile-card-name']/descendant::a[contains(@class,'profile-link-label')]";
 
     @FindBy(xpath = "//*[contains(@class, 'photoContainer')]")
     WebElement iconImage;
@@ -64,7 +64,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public String getLogoName() {
-        return driver.findElement(LOGO_NAME).getText();
+    public String getLogoName(String logoName) {
+        return driver.findElement(By.xpath(String.format(LOGO_NAME, logoName))).getText();
     }
 }
