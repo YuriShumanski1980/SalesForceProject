@@ -13,8 +13,8 @@ public class LoginPageTest extends BaseTest {
         loginPage
                 .loginPage()
                 .login(
-                        System.getProperty("username"),
-                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+                        System.getProperty("username", PropertyReader.getProperty("username")),
+                        System.getProperty("password", PropertyReader.getProperty("password")));
         loginPage
                 .waitForHomePageLoaded();
         Assert.assertEquals(loginPage.getTitle(), "Home | Salesforce");
@@ -25,8 +25,8 @@ public class LoginPageTest extends BaseTest {
         loginPage
                 .loginPage()
                 .login(
-                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
-                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+                        System.getProperty("username", PropertyReader.getProperty("username")),
+                        System.getProperty("password", PropertyReader.getProperty("password")));
         loginPage
                 .waitForHomePageLoaded()
                 .clickLogoName();
@@ -39,8 +39,8 @@ public class LoginPageTest extends BaseTest {
         loginPage
                 .loginPage()
                 .login(
-                        System.getenv().getOrDefault("username1", PropertyReader.getProperty("username1")),
-                        System.getenv().getOrDefault("password1", PropertyReader.getProperty("password1")));
+                        System.getProperty("username1", PropertyReader.getProperty("username1")),
+                        System.getProperty("password1", PropertyReader.getProperty("password1")));
         loginPage
                 .waitForErrorTextMessage();
         Assert.assertEquals(loginPage.getErrorText(), "Please check your username and password. If you still can't log in, contact your Salesforce administrator.");
