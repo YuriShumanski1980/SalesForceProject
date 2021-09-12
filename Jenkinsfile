@@ -10,11 +10,14 @@ pipeline {
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+        text name: 'USERNAME', description: '', defaultValue: ''
     }
+
 
    stages {
       stage('Testing') {
          steps {
+
             // Get some code from a GitHub repository
             git branch: "${params.BRANCH}", url: 'https://github.com/YuriShumanski1980/SalesForceProject.git'
 
@@ -22,7 +25,8 @@ pipeline {
             //sh "mvn clean test"
 
             // To run Maven on a Windows agent, use
-            bat "mvn test -Dtest=LoginPageTest"
+            bat "mvn test -Dtest=LoginPageTest -Dusername=${params.USERNAME}"
+
          }
 
          post {
@@ -33,6 +37,17 @@ pipeline {
             }
          }
       }
+
+//       stage("Env Variables") {
+//         steps{
+//             echo "${env.username}"
+//             echo "${env.password}"
+//             echo "${env.username1}"
+//             echo "${env.password1}"
+//             echo "${env.accountName}"
+//             sh "printenv"
+//         }
+//       }
       stage('Reporting') {
          steps {
              script {

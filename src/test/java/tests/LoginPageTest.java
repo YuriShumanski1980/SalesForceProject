@@ -13,7 +13,7 @@ public class LoginPageTest extends BaseTest {
         loginPage
                 .loginPage()
                 .login(
-                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
+                        System.getProperty("username"),
                         System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
         loginPage
                 .waitForHomePageLoaded();

@@ -14,12 +14,22 @@
         <selenium-java.version>3.141.59</selenium-java.version>
         <testng.vertion>7.0.0</testng.vertion>
         <webdrivermanager.vertion>4.4.1</webdrivermanager.vertion>
-        <maven-surefire-plugin.vertion>3.0.0-M3</maven-surefire-plugin.vertion>
+        <maven-surefire-plugin.vertion>3.0.0-M4</maven-surefire-plugin.vertion>
         <allure-maven.vertion>2.10.0</allure-maven.vertion>
         <allure-testng.vertion>2.7.0</allure-testng.vertion>
         <log4j-core.vertion>2.14.1</log4j-core.vertion>
         <jackson-dataformat-yaml.vertion>2.12.3</jackson-dataformat-yaml.vertion>
         <lombok.vertion>1.18.20</lombok.vertion>
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.USERNAME}</test.param>-->
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.PASSWORD}</test.param>-->
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.PASSWORD1}</test.param>-->
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.USERNAME1}</test.param>-->
+<!--        &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;-->
+<!--        <test.param>${env.ACCOUNTNAME}</test.param>-->
     </properties>
     <build>
         <plugins>
