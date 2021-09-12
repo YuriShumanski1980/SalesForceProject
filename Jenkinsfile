@@ -22,6 +22,8 @@ pipeline {
 
    stages {
       stage('Testing') {
+      environment{
+      password = 123}
          steps {
             // Get some code from a GitHub repository
             git branch: "${params.BRANCH}", url: 'https://github.com/YuriShumanski1980/SalesForceProject.git'
