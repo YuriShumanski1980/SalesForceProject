@@ -14,8 +14,8 @@ public class NewOpportunityModalPageTest extends BaseTest {
         loginPage
                 .loginPage()
                 .login(
-                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
-                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+                        System.getProperty("username", PropertyReader.getProperty("username")),
+                        System.getProperty("password", PropertyReader.getProperty("password")));
         newOpportunityModalPage
                 .openNewOpportunityModalPage()
                 .waitForOpportunityModalPageLoaded()
@@ -31,8 +31,8 @@ public class NewOpportunityModalPageTest extends BaseTest {
         loginPage
                 .loginPage()
                 .login(
-                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
-                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+                        System.getProperty("username", PropertyReader.getProperty("username")),
+                        System.getProperty("password", PropertyReader.getProperty("password")));
         newOpportunityModalPage
                 .openNewOpportunityModalPage()
                 .waitForOpportunityModalPageLoaded()

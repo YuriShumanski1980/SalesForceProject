@@ -13,8 +13,8 @@ public class NewAccountModalPageTest extends BaseTest {
         loginPage
                 .loginPage()
                 .login(
-                        System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
-                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+                        System.getProperty("username", PropertyReader.getProperty("username")),
+                        System.getProperty("password", PropertyReader.getProperty("password")));
         newAccountModalPage
                 .openNewAccountPage()
                 .waitForPageLoaded()

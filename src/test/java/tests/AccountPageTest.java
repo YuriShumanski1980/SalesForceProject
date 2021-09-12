@@ -12,8 +12,9 @@ public class AccountPageTest extends BaseTest {
     public void deleteAccountTest() {
         loginPage
                 .loginPage()
-                .login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
-                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+                .login(
+                        System.getProperty("username", PropertyReader.getProperty("username")),
+                        System.getProperty("password", PropertyReader.getProperty("password")));
         accountPage
                 .openAccountListPage()
                 .clickDropDownForAccountName("TestAccount-SalesForce")
