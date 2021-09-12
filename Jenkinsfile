@@ -23,10 +23,12 @@ pipeline {
    stages {
       stage('Testing') {
          steps {
+            script{
+                     withCredentials([usernamePassword(credentialsId: 'username', passwordVariable: 'password', usernameVariable: 'username')]) {
+                         // some block
+                     }
+            }
 
-         withCredentials([usernamePassword(credentialsId: 'username', passwordVariable: 'password', usernameVariable: 'username')]) {
-             // some block
-         }
             // Get some code from a GitHub repository
             git branch: "${params.BRANCH}", url: 'https://github.com/YuriShumanski1980/SalesForceProject.git'
 
