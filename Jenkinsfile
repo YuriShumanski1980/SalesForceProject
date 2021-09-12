@@ -10,24 +10,13 @@ pipeline {
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+        string name: 'username'
     }
 
-//     environment {
-//             USERNAME = 'username'
-//             PASSWORD = 'password'
-//             USERNAME1 = '${env.USERNAME1}'
-//             PASSWORD1 = '${env.PASSWORD1}'
-//             ACCOUNTNAME = '${env.ACCOUNTNAME}'
-//         }
 
    stages {
       stage('Testing') {
          steps {
-            script{
-                     withCredentials([usernamePassword(credentialsId: 'username', passwordVariable: 'password', usernameVariable: 'username')]) {
-                         // some block
-                     }
-
 
             // Get some code from a GitHub repository
             git branch: "${params.BRANCH}", url: 'https://github.com/YuriShumanski1980/SalesForceProject.git'
@@ -36,8 +25,8 @@ pipeline {
             //sh "mvn clean test"
 
             // To run Maven on a Windows agent, use
-            bat "mvn test -Dtest=LoginPageTest"
-            }
+            bat "mvn test -Dtest=LoginPageTest -Dusername=${params.username}"
+
          }
 
          post {
