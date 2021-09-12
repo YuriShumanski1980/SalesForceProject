@@ -10,8 +10,11 @@ pipeline {
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-        string name: 'USERNAME', description: '', defaultValue: ''
-        string name: 'PASSWORD', description: '', defaultValue: ''
+        string name: 'USERNAME', description: 'Enter your login', defaultValue: ''
+        string name: 'PASSWORD', description: 'Enter your password', defaultValue: ''
+        string name: 'USERNAME1', description: 'Enter an invalid username', defaultValue: ''
+        string name: 'PASSWORD1', description: 'Enter the wrong password', defaultValue: ''
+        string name: 'ACCOUNTNAME', description: 'Enter your account name', defaultValue: ''
     }
 
 
@@ -26,7 +29,7 @@ pipeline {
             //sh "mvn clean test"
 
             // To run Maven on a Windows agent, use
-            bat "mvn test -Dtest=LoginPageTest -Dusername=${params.USERNAME} -Dpassword=${params.PASSWORD}"
+            bat "mvn test -Dtest=LoginPageTest -Dusername=${params.USERNAME} -Dpassword=${params.PASSWORD} -Dusername1=${params.USERNAME1} -Dpassword1=${params.PASSWORD1} -Daccountname=${params.ACCOUNTNAME}"
 
          }
 
@@ -39,16 +42,6 @@ pipeline {
          }
       }
 
-//       stage("Env Variables") {
-//         steps{
-//             echo "${env.username}"
-//             echo "${env.password}"
-//             echo "${env.username1}"
-//             echo "${env.password1}"
-//             echo "${env.accountName}"
-//             sh "printenv"
-//         }
-//       }
       stage('Reporting') {
          steps {
              script {
@@ -61,6 +54,6 @@ pipeline {
                      ])
              }
          }
-        }
+      }
    }
 }
