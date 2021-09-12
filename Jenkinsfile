@@ -27,7 +27,7 @@ pipeline {
                      withCredentials([usernamePassword(credentialsId: 'username', passwordVariable: 'password', usernameVariable: 'username')]) {
                          // some block
                      }
-            }
+
 
             // Get some code from a GitHub repository
             git branch: "${params.BRANCH}", url: 'https://github.com/YuriShumanski1980/SalesForceProject.git'
@@ -37,19 +37,7 @@ pipeline {
 
             // To run Maven on a Windows agent, use
             bat "mvn test -Dtest=LoginPageTest"
-
-//             echo "${env.username}"
-//             echo "${env.password}"
-//             echo "${env.username1}"
-//             echo "${env.password1}"
-//             echo "${env.accountName}"
-//             sh "printenv"
-
-//             echo "username = ${env.USERNAME}"
-//             echo "password = ${env.PASSWORD}"
-//             echo username1 = USERNAME1
-//             echo password1 = PASSWORD1
-//             echo accountName = ACCOUNTNAME
+            }
          }
 
          post {
