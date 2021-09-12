@@ -10,7 +10,7 @@ pipeline {
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-        stringParam name: 'username', description: ''
+        text name: 'USERNAME', description: '', defaultValue: ''
     }
 
 
@@ -25,7 +25,7 @@ pipeline {
             //sh "mvn clean test"
 
             // To run Maven on a Windows agent, use
-            bat "mvn test -Dtest=LoginPageTest -Dusername=${params.username}"
+            bat "mvn test -Dtest=LoginPageTest -Dusername=${params.USERNAME}"
 
          }
 
